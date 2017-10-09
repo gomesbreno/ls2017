@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JavaNCSS - JavaNCSS Development Details</title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+          <meta name="author" content="Hervé Boutemy" />
+          </head>
+  <body class="composite">
+    <div id="banner">
+                  <a href="" id="bannerLeft">
+    
+            JavaNCSS
+    
+            </a>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+            
+  
+    
+            <div class="xleft">
+        Last Published: 2017-10-05
+                  &nbsp;| Version: 32.53
+                      </div>
+            <div class="xright">            <a href="http://maven.apache.org/" class="externalLink">Maven</a>
+            
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+            
+  
+    
+                   <h5>General Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Home</a>
+          </li>
+              
+    <li class="none">
+              <strong>Development</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="todo.html">TODO</a>
+          </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+            
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2>JavaNCSS Development Details</h2>
+<p>JavaNCSS has been moved on August 2008 to Codehaus for a <a href="source-repository.html">shared source code repository</a>. There is also a <a href="issue-tracking.html">bug tracking</a> tool.</p>
+<p>JavaNCSS can actually be built using Ant (<tt>ant all</tt>) or Maven (<tt>mvn package</tt>).</p>
+<p>JavaNCSS site is built with Maven: <tt>mvn site</tt>.</p>
+</div>
+<div class="section"><h2>Guide for JavaNCSS Committers</h2>
+<p>To deploy JavaNCSS site or artifact (either SNAPSHOT or release), you'll need to have your Codehaus credentials defined in <tt>~/.m2/settings.xml</tt> for <tt>codehaus.org</tt> server:</p>
+<div class="source"><pre>&lt;settings&gt;
+  &lt;servers&gt;
+    &lt;server&gt;
+      &lt;id&gt;codehaus.org&lt;/id&gt;
+      &lt;username&gt;your username&lt;/username&gt;
+      &lt;password&gt;your password&lt;/password&gt;
+    &lt;/server&gt;
+  &lt;/servers&gt;
+&lt;/settings&gt;</pre>
+</div>
+<p>Note that starting with Maven 2.1.0, password can be stored encrypted: see <a class="externalLink" href="http://maven.apache.org/guides/mini/guide-encryption.html">the encryption guide</a> on Maven site</p>
+<p>JavaNCSS <tt>pom.xml</tt> is actually configured to deploy the site on <a class="externalLink" href="http://javancss.codehaus.org/">javancss.codehaus.org</a>: see <tt>distributionManagement/site</tt> section. The site can be deployed at any time with <tt>mvn site-deploy</tt> command. <a class="externalLink" href="http://www.kclee.de/clemens/java/javancss/">http://www.kclee.de/clemens/java/javancss/</a> can only be deployed by Clemens.</p>
+<p>JavaNCSS SNAPSHOTs can be deployed on <a class="externalLink" href="http://snapshots.repository.codehaus.org/org/codehaus/javancss/javancss/">Codehaus Snapshot repository</a> with <tt>mvn deploy</tt> command.</p>
+<p>JavaNCSS release is automated with <a class="externalLink" href="http://maven.apache.org/plugins/maven-release-plugin/">Maven release plugin</a>. It has 3 steps:</p>
+<ol type="1"><li>run <a class="externalLink" href="http://maven.apache.org/plugins/maven-release-plugin/examples/prepare-release.html"><tt>mvn release:prepare</tt></a> to prepare the release (including svn commits),</li>
+<li>if everything is ok, run <a class="externalLink" href="http://maven.apache.org/plugins/maven-release-plugin/examples/perform-release.html"><tt>mvn release:perform</tt></a> to deploy the artifact and the site,</li>
+<li>then update <a class="externalLink" href="http://jira.codehaus.org/browse/JAVANCSS">Jira</a>: follow &quot;Administer Project&quot; then &quot;Manage versions&quot; links to mark the release done and declare the next version.</li>
+</ol>
+<p>The release is deployed on <a class="externalLink" href="http://repository.codehaus.org/org/codehaus/javancss/">Codehaus main repository</a>, which is sync'ed once a day on <a class="externalLink" href="http://repo1.maven.org/maven2/org/codehaus/javancss/">Maven Central repository</a>. Note that as soon as a release has been sync'ed to Maven Central repository, you can't change anything: any change on Codehaus main repository will be ignored by Maven Central repository.</p>
+</div>
+<div class="section"><h2>External Resources</h2>
+<ul><li><a class="externalLink" href="http://maven.apache.org/guides/mini/guide-releasing.html">Releasing guide</a> on Maven site</li>
+<li>Sonatype's <a class="externalLink" href="http://www.sonatype.com/books/maven-book/reference/">Maven: The Definitive Guide</a></li>
+</ul>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          1997-2017
+    
+          Chr. Clemens Lee and companions
+          
+  
+
+  
+    
+            
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
